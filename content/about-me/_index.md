@@ -7,4 +7,4 @@ keywords: ""
 slug: about-me
 title: About Me
 ---
-#### MBA Candidate at London Business School | Ex-Amazon | PMP | Project Management | Product Management
+MBA Candidate at London Business School | Ex-Amazon | PMP | Project Management | Product Management
