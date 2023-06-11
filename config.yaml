@@ -90,7 +90,7 @@ params:
       - image: Bromo.jpg
         subtitle: Places I've visited :)
         title: Travel Blogs
-        url: travel
+        url: travel-blogs
       - image: books.jpg
         subtitle: Summary of books that I've read in Y2023
         title: Books

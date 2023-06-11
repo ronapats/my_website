@@ -2,8 +2,8 @@
 date: "2017-10-31T22:27:21-05:00"
 draft: false
 image: pic02.jpg
-slug: blogs
-title: Lifestyle
+slug: projects
+title: My Projects
 ---
 
-My blogs about technology and lifestyle.
+My Data Science Project using R Programming
