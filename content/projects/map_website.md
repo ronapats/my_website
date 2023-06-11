@@ -4,7 +4,7 @@ categories:
 - ""
 date: "2017-10-31T22:42:51-05:00"
 draft: false
-image: 
+image: travel-pic.jpg
 keywords: ""
 slug: map_website
 title: My map
