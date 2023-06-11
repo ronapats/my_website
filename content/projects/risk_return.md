@@ -11,15 +11,6 @@ keywords: ""
 slug: risk_return # slug is the shorthand URL address... no spaces plz
 title: Risk-Return of DJIA stocks
 ---
-  
-
-
-
-
-
-
-
-
 
 # Returns of financial stocks
 
@@ -27,8 +18,7 @@ Next, let's choose the [Dow Jones Industrial Average (DJIA)](https://en.wikipedi
 
 We will use the `rvest` package to scrape the Wikipedia page for the constituents of DJIA
 
-
-```r
+``` r
 djia_url <- "https://en.wikipedia.org/wiki/Dow_Jones_Industrial_Average"
 
 
@@ -66,11 +56,7 @@ tickers <- table1 %>%
   c("SPY", "^VIX") # and lets us add SPY, the SP500 ETF, and the VIX index
 ```
 
-
-
-
-
-```r
+``` r
 # Notice the cache=TRUE argument in the chunk options. Because getting data is time consuming, # cache=TRUE means that once it downloads data, the chunk will not run again next time you knit your Rmd
 
 myStocks <- tickers %>% 
@@ -81,7 +67,7 @@ myStocks <- tickers %>%
 glimpse(myStocks) # examine the structure of the resulting data frame
 ```
 
-```
+```         
 ## Rows: 180,905
 ## Columns: 8
 ## Groups: symbol [32]
@@ -97,9 +83,7 @@ glimpse(myStocks) # examine the structure of the resulting data frame
 
 Financial performance analysis depend on returns; If I buy a stock today for 100 and I sell it tomorrow for 101.75, my one-day return, assuming no transaction costs, is 1.75%. So given the adjusted closing prices, our first step is to calculate daily and monthly returns.
 
-
-
-```r
+``` r
 #calculate daily returns
 myStocks_returns_daily <- myStocks %>%
   tq_transmute(select     = adjusted, 
@@ -119,8 +103,7 @@ myStocks_returns_monthly <- myStocks %>%
                cols = c(nested.col)) 
 ```
 
-
-```r
+``` r
 #visualise monthly returns since 2010, for each of the 30 DJIA stocks
 myStocks_returns_monthly %>% 
   filter(symbol != "^VIX", symbol != "SPY") %>% 
@@ -140,7 +123,6 @@ myStocks_returns_monthly %>%
   NULL
 ```
 
-<img src="/projects/risk_return_files/figure-html/unnamed-chunk-1-1.png" width="648" style="display: block; margin: auto;" />
+<img src="/blogs/risk_return_files/figure-html/unnamed-chunk-1-1.png" width="648" style="display: block; margin: auto;" />
 
-
-<img src="/projects/risk_return_files/figure-html/risk_return-1.png" width="648" style="display: block; margin: auto;" />
+<img src="/blogs/risk_return_files/figure-html/risk_return-1.png" width="648" style="display: block; margin: auto;" />
