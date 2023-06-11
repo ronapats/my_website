@@ -1,0 +1,336 @@
+---
+categories:
+- ""
+- ""
+draft: false
+image: project.jpg
+keywords: ""
+slug: homework2
+title: Homework2
+---
+
+
+
+
+# Mass shootings in the US
+
+In July 2012, in the aftermath of a mass shooting in a movie theater in Aurora, Colorado, [Mother Jones](https://www.motherjones.com/politics/2012/07/mass-shootings-map/) published a report on mass shootings in the United States since 1982. Importantly, they provided the underlying data set as [an open-source database](https://www.motherjones.com/politics/2012/12/mass-shootings-mother-jones-full-data/) for anyone interested in studying and understanding this criminal behavior.
+
+## Obtain the data
+
+
+
+| column(variable)     | description                                                                 |
+|--------------------------|----------------------------------------------|
+| case                 | short name of incident                                                      |
+| year, month, day     | year, month, day in which the shooting occurred                             |
+| location             | city and state where the shooting occcurred                                 |
+| summary              | brief description of the incident                                           |
+| fatalities           | Number of fatalities in the incident, excluding the shooter                 |
+| injured              | Number of injured, non-fatal victims in the incident, excluding the shooter |
+| total_victims        | number of total victims in the incident, excluding the shooter              |
+| location_type        | generic location in which the shooting took place                           |
+| male                 | logical value, indicating whether the shooter was male                      |
+| age_of_shooter       | age of the shooter when the incident occured                                |
+| race                 | race of the shooter                                                         |
+| prior_mental_illness | did the shooter show evidence of mental illness prior to the incident?      |
+
+## Explore the data
+
+### Specific questions
+
+-   Generate a data frame that summarizes the number of mass shootings per year.
+
+
+```r
+mass_shootings %>% 
+  count(year)
+```
+
+```
+## # A tibble: 37 × 2
+##     year     n
+##    <dbl> <int>
+##  1  1982     1
+##  2  1984     2
+##  3  1986     1
+##  4  1987     1
+##  5  1988     1
+##  6  1989     2
+##  7  1990     1
+##  8  1991     3
+##  9  1992     2
+## 10  1993     4
+## # ℹ 27 more rows
+```
+
+-   Generate a bar chart that identifies the number of mass shooters associated with each race category. The bars should be sorted from highest to lowest and each bar should show its number.
+
+
+```r
+mass_shootings %>%
+ count(race,sort=TRUE) %>% 
+ drop_na(race)%>% #we don't want to have NA's for this variable
+  mutate(race=fct_rev(fct_reorder(race,n))) %>% #reordering so in the graph it seems increaseing
+  ggplot(aes(race,n,fill=race))+ #aesthetics
+  geom_col()+
+  geom_text(aes(label = n,y=n+0.5),colour = "black",position=position_dodge(0.9),vjust=0)+
+  labs(
+    title = "Number of shootings per race",
+    x = "Race",
+    y = "Frequency"
+  )+theme_minimal()
+```
+
+<img src="homework2_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+
+-   Generate a boxplot visualizing the number of total victims, by type of location.
+
+
+```r
+  ggplot(mass_shootings,aes(x=location_type,y=total_victims))+geom_boxplot()+theme_minimal() #very simple and self-explanatory code
+```
+
+<img src="homework2_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+
+-   Redraw the same plot, but remove the Las Vegas Strip massacre from the dataset.
+
+
+```r
+set_woVegas<-mass_shootings %>% filter(location!="Las Vegas, Nevada")
+ggplot(set_woVegas,aes(x=location_type,y=total_victims))+geom_boxplot()+theme_minimal()+
+  labs(
+    title="Distribution of total victims per location type w/o Vegas Shooting",
+    y="Total victims",
+    x=NULL
+  )
+```
+
+<img src="homework2_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+
+### More open-ended questions
+
+Address the following questions. Generate appropriate figures/tables to support your conclusions.
+
+-   How many white males with prior signs of mental illness initiated a mass shooting after 2000?
+
+_Answer_ : 4 out of 26 (approx 15%)
+
+
+```r
+mass_shootings %>% 
+  filter(male==TRUE, year>2000) %>%  #Filtering after year 2000
+  drop_na(race,prior_mental_illness) %>%  #Deleting the NA's from the variables we want
+  group_by(race) %>% 
+  count(prior_mental_illness) %>% 
+  ggplot(aes(x=race,y=n,fill=prior_mental_illness))+geom_col()+theme_minimal()+
+  geom_text(position=position_stack(vjust=0.5),aes(label = n),colour = "white")+
+  labs(
+    title = "Number of shootings per race and mental illness",
+    x = "Race",
+    y = "Frequency"
+  )
+```
+
+<img src="homework2_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+
+-   Which month of the year has the most mass shootings? Generate a bar chart sorted in chronological (natural) order (Jan-Feb-Mar- etc) to provide evidence of your answer.
+
+_Answer_: February with 13 shootings
+
+
+```r
+mass_shootings$month2<-factor(mass_shootings$month, levels=c("Jan","Feb","Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec")) #Creating levels and factors from the months already mentioned
+
+mass_shootings %>% 
+ count(month2) %>% 
+  ggplot(aes(x=month2,y=n))+geom_col(fill="blue")+theme_minimal()+
+labs(
+    title = "Number of shootings per month",
+    x = "Month",
+    y = "Frequency"
+  )+geom_text(aes(label = n,y=n+0.5),colour = "black")
+```
+
+<img src="homework2_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+
+-   How does the distribution of mass shooting fatalities differ between White and Black shooters? What about White and Latino shooters?
+
+_Answer_: one can see that the one with most outliers and biggest IQR is White, then Black and finally Latinos. From the histograms, there is a more visual representation of the total victims among these races.
+
+
+```r
+#We want to use the data set without the Vegas distribution which is clearly an outlier
+#Creating a boxplot to see distribution, IQR and outliers
+set_woVegas %>% 
+  drop_na(race) %>% #Dropping NA's 
+  filter(race %in% c("Black","White","Latino")) %>% #Keeping only the races we want to analyze
+ggplot(aes(x=race,y=total_victims))+geom_boxplot()+theme_minimal()+
+  labs(
+    title="Distribution of total victims by race",
+    y="Total victims",
+    x=NULL
+  )
+```
+
+<img src="homework2_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+
+```r
+#Creating a bar plot stacked 
+
+set_woVegas %>% 
+  drop_na(race,total_victims) %>% 
+  filter(race %in% c("Black","White","Latino")) %>% 
+ggplot(aes(fill=race,x=total_victims))+geom_histogram(position="dodge")+theme_minimal()+
+  labs(
+    title="Distribution of total victims by race",
+    y="Total victims",
+    x=NULL
+  )
+```
+
+```
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+```
+
+<img src="homework2_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+
+
+### Very open-ended
+
+-   Are mass shootings with shooters suffering from mental illness different from mass shootings with no signs of mental illness in the shooter?
+
+
+```r
+#Analyzing via table
+set_woVegas %>% 
+  group_by(prior_mental_illness) %>% 
+  drop_na(prior_mental_illness) %>% 
+  summarise(mean_fatalities=mean(fatalities),mean_injured=mean(injured),mean_victims=mean(total_victims),
+                                                                                          mean_age=mean(age_of_shooter))
+```
+
+```
+## # A tibble: 2 × 5
+##   prior_mental_illness mean_fatalities mean_injured mean_victims mean_age
+##   <chr>                          <dbl>        <dbl>        <dbl>    <dbl>
+## 1 No                              7.06         4.76         11.8     36.8
+## 2 Yes                             8.11         8.44         16.5     34.0
+```
+
+
+```r
+#Analysing by type of place- total
+set_woVegas %>% 
+  group_by(prior_mental_illness) %>% 
+  #drop_na(prior_mental_illness) %>% 
+  count(location_type) %>% 
+  ggplot(aes(x=prior_mental_illness,y=n,fill=location_type))+geom_col()+theme_minimal()+
+  geom_text(position=position_stack(vjust=0.5),aes(label = n),colour = "white")+
+  labs(
+    title = "Number of shootings from people with and without mental illness by location",
+    x = "Prior mental illness",
+    y = "Frequency"
+  )
+```
+
+<img src="homework2_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+
+```r
+#Analysing by type of place- frequency /percentage of total
+set_woVegas %>% 
+  group_by(prior_mental_illness) %>% 
+  count(location_type) %>% 
+  mutate(freq=(n/sum(n))*100)%>% 
+  ggplot(aes(x=prior_mental_illness,y=freq,fill=location_type))+geom_col()+theme_minimal()+
+  geom_text(position=position_stack(vjust=0.5),aes(label = n),colour = "white")+
+  labs(
+    title = "Number of shootings from people with and without mental illness by location",
+    x = "Prior mental illness",
+    y = "Frequency in Percentage %"
+  )
+```
+
+<img src="homework2_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+
+_Answer_:
+- Summary statistics don't show any great difference among people with prior mental illness for fatalities, injured nor age. However, the mean victims for people with prior mental illness is higher than those who don't.
+- Viewing the graph, one can notice that clearly the shootings made by people with prior mental illness is higher, and that the type of places where the shooting occurred too. However, there are many "NA's", which may tell us that the sample size with this attribute  may not be big enough to arrive to conclusions. Religious places are not among people without mental illness
+
+-   Assess the relationship between mental illness and total victims, mental illness and location type, and the intersection of all three variables.
+
+
+```r
+set_woVegas %>% 
+  group_by(prior_mental_illness,location_type) %>% 
+  drop_na(location_type) %>% 
+  summarise(count=n(),total_victims=sum(total_victims)) %>% 
+  ggplot(aes(x=prior_mental_illness,y=total_victims,fill=location_type))+geom_col()+theme_minimal()+
+  geom_text(position=position_stack(vjust=0.5),aes(label = total_victims),colour = "white")+
+  labs(
+    title = "Total victims from shootings of people with and without mental illness by location",
+    x = "Prior mental illness",
+    y = "Total victims"
+  )
+```
+
+```
+## `summarise()` has grouped output by 'prior_mental_illness'. You can override
+## using the `.groups` argument.
+```
+
+<img src="homework2_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+_Answer_: There are many "NA"'s in the variable of prior mental illness to arrive to conclusions about this variable. However, similar results as above. One may conclude the following:
+- From the shootings that had the shooter classified as with or w/o prior mental illness, most of the victims and shootings are registered to the ones that had a prior mental illness.
+- From the location_type, it seems that the places where most shootings occurred and where more victims had were schools or religious places.
+- It can be inferred that people that had registered as "none prior illness" didn't have shootings occurring at religious places, whereas people with prior mental illness did. 
+
+
+# Exploring credit card fraud
+
+We will be using a dataset with credit card transactions containing legitimate and fraud transactions. Fraud is typically well below 1% of all transactions, so a naive model that predicts that all transactions are legitimate and not fraudulent would have an accuracy of well over 99%-- pretty good, no? (well, not quite as we will see later in the course)
+
+You can read more on credit card fraud on [Credit Card Fraud Detection Using Weighted Support Vector Machine](https://www.scirp.org/journal/paperinformation.aspx?paperid=105944)
+
+The dataset we will use consists of credit card transactions and it includes information about each transaction including customer details, the merchant and category of purchase, and whether or not the transaction was a fraud.
+
+## Obtain the data
+
+The dataset is too large to be hosted on Canvas or Github, so please download it from dropbox https://www.dropbox.com/sh/q1yk8mmnbbrzavl/AAAxzRtIhag9Nc_hODafGV2ka?dl=0 and save it in your `dsb` repo, under the `data` folder
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
