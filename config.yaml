@@ -1,31 +1,30 @@
 baseURL: https://ronapat-portfolio.netlify.app/
 languageCode: en-us
-title: Portfolio website for Ronapat Srisupavanich
-theme: forty
+title: Ronapat Srisupavanich
+theme: 
 googleAnalytics: ''
 disqusShortname: ''
 params:
   banner:
-    buttonText: Get Started
+    # buttonText: Get Started
     subtitle: |-
-      #A RESPONSIVE SITE TEMPLATE DESIGNED BY HTML5 UP
-      #AND RELEASED UNDER THE CREATIVE COMMONS.
-    title: Hi, my name is Ronapat Srisupavanich
+      This is Ronapat's personal website.
+    title: Hi, my name is Ronapat!
   blog: {}
   contact:
     address:
-      - city: London, NW8 8JQ
-        country: United Kingdom
-        street: Pollitt Dr.
-        title: Flat 19 Helsby Court
+      - city: London, United Kingdom | Bangkok, Thailand
+        # country: 
+        # street: 
+        title: Location
     buttonClear: Clear
     buttonSend: Send message
     email:
-      - email: rons.mba2023@london.edu
+      - email: rons.mba2023@london.edu | ronapat@hotmail.com
         title: Email
     enable: yes
     phone:
-      - phone: (070) 4232-6459
+      - phone: +44 70-4232-6459 | +66 87-359-7557
         title: Phone
   custom_css: []
   custom_js: []
@@ -35,12 +34,12 @@ params:
     text: Please visit [this page](/)
   favicon: favicon.ico
   footer:
-    copyright: #CompanyName
+    copyright: Ronapat Srisupavanich
     enable: yes
     quicklinks:
-      - alt: HTML5 UP
-        text: 'Design: '
-        url: #https://www.html5up.net
+      # - alt: HTML5 UP
+      #   text: 'Design: '
+      #   url: #https://www.html5up.net
     social:
       - icon: fa-twitter
         label: Twitter
@@ -60,30 +59,34 @@ params:
   image: ''
   name: Ronapat Srisupavanich
   navigation:
-    button1:
-      - name: Get Started
-        url: blogs
-    button2:
-      - name: Log In
-        url: '#'
+    # button1:
+    #   - name: Get Started
+    #     url: blogs
+    # button2:
+    #   - name: Log In
+    #     url: '#'
     links:
       - name: Home
         url: '#'
-      - name: Blogs
+      - name: About Me
         url: blogs
-      - name: Generic Blog
+      - name: Travel Blogs
         url: blogs/ipsum
-      - name: Elements
-        url: elements.html
+      - name: Books
+        url: blogs/ipsum
+      - name: Projects
+        url: blogs/ipsum
+      # - name: Elements
+      #   url: elements.html
     menu: Menu
-    subtitle: By HTML5 Up
-    title: Forty
+    # subtitle: By HTML5 Up
+    # title: Forty
   tiles:
     enable: yes
     showcase:
       - image: lbs.jpg
-        subtitle: Ipsum Dolor Sit Amet
-        title: Aliquam
+        subtitle: :)
+        title: About Me
         url: blogs/risk_return
       - image: pic02.jpg
         subtitle: Feugiat Amet Tempus
@@ -95,24 +98,24 @@ params:
         url: blogs/magna
       - image: pic04.jpg
         subtitle: Nisl Sed Aliquam
-        title: Ipsum
+        title: Projects
         url: blogs/ipsum
-      - image: pic05.jpg
-        subtitle: Ipsum Dolor Sit Amet
-        title: Consequat
-        url: blogs/ipsum
-      - image: pic06.jpg
-        subtitle: Feugiat Amet Tempus
-        title: Etiam
-        url: blogs/ipsum
+      # - image: pic05.jpg
+      #   subtitle: Ipsum Dolor Sit Amet
+      #   title: Consequat
+      #   url: blogs/ipsum
+      # - image: pic06.jpg
+      #   subtitle: Feugiat Amet Tempus
+      #   title: Etiam
+      #   url: blogs/ipsum
   two:
-    buttonText: Get Started
-    enable: yes
-    subtitle: "Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero.
-      \n    Mauris aliquet magna magna sed nunc rhoncus pharetra. \n    Pellentesque
-      condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia
-      pellentesque lorem ipsum dolor. \n    Nullam et orci eu lorem consequat tincidunt.
-      Vivamus et sagittis libero.\n    Mauris aliquet magna magna sed nunc rhoncus
-      amet pharetra et feugiat tempus."
-    title: Massa libero
-    url: blogs
+    # buttonText: Get Started
+    # enable: yes
+    # subtitle: "Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero.
+    #   \n    Mauris aliquet magna magna sed nunc rhoncus pharetra. \n    Pellentesque
+    #   condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia
+    #   pellentesque lorem ipsum dolor. \n    Nullam et orci eu lorem consequat tincidunt.
+    #   Vivamus et sagittis libero.\n    Mauris aliquet magna magna sed nunc rhoncus
+    #   amet pharetra et feugiat tempus."
+    # title: Massa libero
+    # url: blogs
