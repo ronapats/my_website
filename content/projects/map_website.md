@@ -7,7 +7,8 @@ draft: false
 image: travel-pic.jpg
 keywords: ""
 slug: map_website
-title: My map
+title: My Map
+description: Map showing the places that I've visited
 ---
 
 
