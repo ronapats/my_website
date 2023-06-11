@@ -6,7 +6,7 @@ googleAnalytics: ''
 disqusShortname: ''
 params:
   banner:
-    # buttonText: Get Started
+    buttonText: Get Started
     subtitle: |-
       This is Ronapat's personal website.
     title: Hi, my name is Ronapat!
@@ -89,15 +89,15 @@ params:
         title: About Me
         url: blogs/risk_return
       - image: pic02.jpg
-        subtitle: Feugiat Amet Tempus
-        title: Tempus
+        subtitle: Places I've visited :)
+        title: Travel Blogs
         url: blogs/tempus
       - image: pic03.jpg
-        subtitle: Lorem Etiam Nullam
-        title: Magna
+        subtitle: Summary of books that I've read in Y2023
+        title: Books
         url: blogs/magna
       - image: pic04.jpg
-        subtitle: Nisl Sed Aliquam
+        subtitle: Data Science with R
         title: Projects
         url: blogs/ipsum
       # - image: pic05.jpg
