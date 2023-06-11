@@ -7,15 +7,14 @@ disqusShortname: ''
 params:
   banner:
     buttonText: Get Started
-    subtitle: |-
-      This is Ronapat's personal website.
+    subtitle: This is Ronapat's personal website.
     title: Hi, my name is Ronapat!
   blog: {}
   contact:
     address:
       - city: London, United Kingdom | Bangkok, Thailand
-        # country: 
-        # street: 
+        country:
+        street:
         title: Location
     buttonClear: Clear
     buttonSend: Send message
@@ -24,7 +23,7 @@ params:
         title: Email
     enable: yes
     phone:
-      - phone: +44 70-4232-6459 | +66 87-359-7557
+      - phone: +44 70-4232-6459
         title: Phone
   custom_css: []
   custom_js: []
@@ -108,7 +107,7 @@ params:
       #   subtitle: Feugiat Amet Tempus
       #   title: Etiam
       #   url: blogs/ipsum
-  two:
+  # two:
     # buttonText: Get Started
     # enable: yes
     # subtitle: "Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero.
