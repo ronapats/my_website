@@ -1,7 +1,7 @@
 baseURL: https://ronapat-portfolio.netlify.app/
 languageCode: en-us
 title: Ronapat Srisupavanich
-theme: 
+theme: Forty
 googleAnalytics: ''
 disqusShortname: ''
 params:
@@ -83,19 +83,19 @@ params:
   tiles:
     enable: yes
     showcase:
-      - image: lbs.jpg
+      - image: LBS-profile.jpg
         subtitle: :)
         title: About Me
         url: blogs/risk_return
-      - image: pic02.jpg
+      - image: Bromo.jpg
         subtitle: Places I've visited :)
         title: Travel Blogs
         url: blogs/tempus
-      - image: pic03.jpg
+      - image: books.jpg
         subtitle: Summary of books that I've read in Y2023
         title: Books
         url: blogs/magna
-      - image: pic04.jpg
+      - image: project.jpg
         subtitle: Data Science with R
         title: Projects
         url: blogs/ipsum
