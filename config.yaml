@@ -78,15 +78,15 @@ params:
       # - name: Elements
       #   url: elements.html
     menu: Menu
-    # subtitle: By HTML5 Up
-    # title: Forty
+    subtitle: Personal Website
+    title: Ronapat's 
   tiles:
     enable: yes
     showcase:
       - image: LBS-profile.jpg
         subtitle: :)
         title: About Me
-        url: blogs/risk_return
+        url: blogs
       - image: Bromo.jpg
         subtitle: Places I've visited :)
         title: Travel Blogs
@@ -98,7 +98,7 @@ params:
       - image: project.jpg
         subtitle: Data Science with R
         title: Projects
-        url: blogs/ipsum
+        url: blogs/risk_return
       # - image: pic05.jpg
       #   subtitle: Ipsum Dolor Sit Amet
       #   title: Consequat
@@ -107,14 +107,14 @@ params:
       #   subtitle: Feugiat Amet Tempus
       #   title: Etiam
       #   url: blogs/ipsum
-  two:
-  buttonText: Get Started
-  enable: yes
-  subtitle: "Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero.
-    \n    Mauris aliquet magna magna sed nunc rhoncus pharetra. \n    Pellentesque
-    condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia
-    pellentesque lorem ipsum dolor. \n    Nullam et orci eu lorem consequat tincidunt.
-    Vivamus et sagittis libero.\n    Mauris aliquet magna magna sed nunc rhoncus
-    amet pharetra et feugiat tempus."
-  title: Massa libero
-  url: blogs
+  # two:
+  # buttonText: Get Started
+  # enable: yes
+  # subtitle: "Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero.
+  #   \n    Mauris aliquet magna magna sed nunc rhoncus pharetra. \n    Pellentesque
+  #   condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia
+  #   pellentesque lorem ipsum dolor. \n    Nullam et orci eu lorem consequat tincidunt.
+  #   Vivamus et sagittis libero.\n    Mauris aliquet magna magna sed nunc rhoncus
+  #   amet pharetra et feugiat tempus."
+  # title: Massa libero
+  # url: blogs
