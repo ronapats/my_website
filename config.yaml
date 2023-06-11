@@ -68,13 +68,13 @@ params:
       - name: Home
         url: '#'
       - name: About Me
-        url: blogs
+        url: about-me
       - name: Travel Blogs
-        url: blogs/ipsum
+        url: travel-blogs
       - name: Books
-        url: blogs/ipsum
+        url: books
       - name: Projects
-        url: blogs/ipsum
+        url: projects
       # - name: Elements
       #   url: elements.html
     menu: Menu
@@ -86,19 +86,19 @@ params:
       - image: LBS-profile.jpg
         subtitle: :)
         title: About Me
-        url: blogs
+        url: about-me
       - image: Bromo.jpg
         subtitle: Places I've visited :)
         title: Travel Blogs
-        url: blogs/tempus
+        url: travel
       - image: books.jpg
         subtitle: Summary of books that I've read in Y2023
         title: Books
-        url: blogs/magna
+        url: books
       - image: project.jpg
         subtitle: Data Science with R
         title: Projects
-        url: blogs/risk_return
+        url: projects
       # - image: pic05.jpg
       #   subtitle: Ipsum Dolor Sit Amet
       #   title: Consequat
