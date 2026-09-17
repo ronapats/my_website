@@ -1,0 +1,75 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getCollection, render } from "astro:content";
+
+const books = (await getCollection("books")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const rendered = await Promise.all(
+  books.map(async (book) => ({ book, Content: (await render(book)).Content }))
+);
+---
+
+<BaseLayout
+  title="Books"
+  description="Books I've read, with the notes I took on each — first 21 so far."
+>
+  <section class="mx-auto max-w-page px-6 pb-8 pt-20 sm:px-8 sm:pt-28">
+    <p class="text-sm uppercase tracking-[0.2em] text-ink-soft">Books</p>
+    <h1 class="mt-4 max-w-2xl font-serif text-4xl leading-tight text-ink sm:text-5xl">
+      What I've been reading.
+    </h1>
+    <p class="mt-6 max-w-xl text-lg text-ink-soft">
+      A running log, oldest first — click a book to see the notes I took
+      while reading it. First 21 so far, more to come.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-page px-6 py-8 sm:px-8">
+    <div class="divide-y divide-line border-t border-line">
+      {
+        rendered.map(({ book, Content }) => (
+          <details class="group">
+            <summary class="flex cursor-pointer list-none items-start justify-between gap-4 py-5">
+              <div class="flex items-baseline gap-4">
+                <span class="w-6 shrink-0 text-sm text-ink-soft">
+                  {String(book.data.order).padStart(2, "0")}
+                </span>
+                <div>
+                  <h2 class="font-serif text-lg text-ink group-open:text-accent">
+                    {book.data.title}
+                  </h2>
+                  <div class="mt-1 flex flex-wrap items-center gap-2 text-xs text-ink-soft">
+                    <span>{book.data.dates}</span>
+                    {book.data.context && (
+                      <span class="rounded-full bg-accent-soft px-2 py-0.5 text-accent">
+                        {book.data.context}
+                      </span>
+                    )}
+                    {book.data.tags.map((tag) => (
+                      <span class="rounded-full border border-line px-2 py-0.5">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <span
+                aria-hidden="true"
+                class="mt-1 shrink-0 text-xl text-ink-soft transition-transform group-open:rotate-45"
+              >
+                +
+              </span>
+            </summary>
+            <div
+              class="prose prose-neutral max-w-none pb-8 pl-10 prose-headings:font-serif prose-headings:font-medium prose-a:text-ink prose-a:underline prose-a:decoration-line prose-a:underline-offset-4 hover:prose-a:decoration-accent hover:prose-a:text-accent prose-blockquote:border-accent prose-blockquote:text-ink-soft prose-strong:text-ink"
+            >
+              <Content />
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

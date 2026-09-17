@@ -8,6 +8,7 @@ export interface Employer {
   company: string;
   context: string;
   location: string;
+  logo: string;
   roles: Role[];
 }
 
@@ -18,6 +19,7 @@ export const experience: Employer[] = [
     company: "Agoda",
     context: "Leading online travel agency, part of Booking Holdings",
     location: "Bangkok, Thailand",
+    logo: "/logos/agoda.png",
     roles: [
       {
         title: "Project Manager — Partnership Excellence, B2B (Customer Experience Group)",
@@ -44,6 +46,7 @@ export const experience: Employer[] = [
     company: "Poly.AI",
     context: "Conversational AI for automated customer service",
     location: "London, UK",
+    logo: "/logos/poly-ai.png",
     roles: [
       {
         title: "Business Development — MBA Internship",
@@ -59,6 +62,7 @@ export const experience: Employer[] = [
     context:
       "EdTech mentorship platform connecting SMBs and charities with digital experts",
     location: "London, UK",
+    logo: "/logos/digital-boost.png",
     roles: [
       {
         title: "Product Management — MBA Internship",
@@ -73,6 +77,7 @@ export const experience: Employer[] = [
     company: "Carsome",
     context: "Southeast Asia's largest used-cars e-commerce platform",
     location: "Bangkok, Thailand",
+    logo: "/logos/carsome.png",
     roles: [
       {
         title: "Growth Strategy — MBA Internship",
@@ -87,6 +92,7 @@ export const experience: Employer[] = [
     company: "Amazon",
     context: "Amazon Logistics",
     location: "Tokyo, Japan",
+    logo: "/logos/amazon.png",
     roles: [
       {
         title: "Project Engineer II / Project Engineer",
@@ -103,6 +109,7 @@ export const experience: Employer[] = [
     company: "Mitsubishi Heavy Industries",
     context: "Global leader in engineering, manufacturing, and infrastructure projects",
     location: "Japan · Thailand · Macau",
+    logo: "/logos/mhi.png",
     roles: [
       {
         title:
