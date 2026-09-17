@@ -1,28 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { timeline } from "@/data/timeline";
-
-// PLACEHOLDER CONTENT — replace once real project/impact details are in.
-const highlights = [
-  {
-    title: "Project title one",
-    blurb:
-      "One sentence on the problem and the outcome — replace with a real highlight once Portfolio is filled in.",
-    href: "/portfolio",
-  },
-  {
-    title: "Project title two",
-    blurb:
-      "One sentence on the problem and the outcome — replace with a real highlight once Portfolio is filled in.",
-    href: "/portfolio",
-  },
-  {
-    title: "Project title three",
-    blurb:
-      "One sentence on the problem and the outcome — replace with a real highlight once Portfolio is filled in.",
-    href: "/portfolio",
-  },
-];
 ---
 
 <BaseLayout title="Home">
@@ -84,7 +62,7 @@ const highlights = [
         {
           timeline.map((item) => (
             <div class="relative">
-              <span class="absolute left-0 top-1.5 h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-accent ring-4 ring-bg" />
+              <span class="absolute -left-8 top-1.5 h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-accent ring-4 ring-bg" />
               <p class="text-xs uppercase tracking-wide text-ink-soft">
                 {item.year} · {item.category}
               </p>
@@ -94,30 +72,6 @@ const highlights = [
               )}
               <p class="mt-2 max-w-2xl text-ink-soft">{item.description}</p>
             </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <section class="border-t border-line bg-white/40">
-    <div class="mx-auto max-w-page px-6 py-16 sm:px-8">
-      <div class="flex items-baseline justify-between">
-        <h2 class="font-serif text-2xl text-ink">Selected work</h2>
-        <a href="/portfolio" class="link-quiet text-sm text-ink-soft hover:text-accent">
-          View all →
-        </a>
-      </div>
-      <div class="mt-10 grid gap-8 sm:grid-cols-3">
-        {
-          highlights.map((item) => (
-            <a href={item.href} class="link-quiet group block">
-              <div class="aspect-[4/3] rounded-lg border border-dashed border-line bg-accent-soft/40 transition-colors group-hover:border-accent" />
-              <h3 class="mt-4 font-serif text-lg text-ink group-hover:text-accent">
-                {item.title}
-              </h3>
-              <p class="mt-1 text-sm text-ink-soft">{item.blurb}</p>
-            </a>
           ))
         }
       </div>

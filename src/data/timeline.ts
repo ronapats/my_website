@@ -57,7 +57,7 @@ export const timeline: TimelineItem[] = [
   {
     year: "Ongoing",
     category: "Sport",
-    title: "Endurance racing",
+    title: "Personal records",
     description: "10K — 44:02 · Half marathon — 1:40:51 · Hyrox Men Solo Open — 1:21:57.",
   },
 ];
