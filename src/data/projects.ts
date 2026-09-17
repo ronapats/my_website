@@ -1,4 +1,9 @@
-export type ProjectIcon = "fpl" | "football" | "fitness" | "chat";
+export type ProjectIcon = "fpl" | "football" | "fitness";
+
+export interface Screenshot {
+  src: string;
+  alt: string;
+}
 
 export interface Project {
   slug: string;
@@ -12,6 +17,7 @@ export interface Project {
   outcome: string;
   tags: string[];
   icon: ProjectIcon;
+  screenshots?: Screenshot[];
 }
 
 export const projects: Project[] = [
@@ -34,6 +40,12 @@ export const projects: Project[] = [
     outcome:
       "Running live for the group's weekly league — replaced a manually updated spreadsheet with an always-current bot.",
     tags: ["Cloudflare Workers", "LINE Messaging API", "Cron", "KV"],
+    screenshots: [
+      {
+        src: "/projects/fpl-commands.jpg",
+        alt: "LINE chat showing the FPL bot's strategy reminder, live score standings, and payout ledger replies",
+      },
+    ],
   },
   {
     slug: "line-football-bot",
@@ -54,6 +66,16 @@ export const projects: Project[] = [
     outcome:
       "In active weekly use in the group chat — replaced a recurring manual sorting task with an instant reply.",
     tags: ["LLM prompt engineering", "Groq", "LINE Messaging API", "Express"],
+    screenshots: [
+      {
+        src: "/projects/football-organize.jpg",
+        alt: "LINE group chat: a raw attendance list sent to the bot and its position-sorted reply (GK/CB/RLB/MF/FW)",
+      },
+      {
+        src: "/projects/football-teams.jpg",
+        alt: "LINE group chat: a participant list sent to the bot and its randomized three-team split reply",
+      },
+    ],
   },
   {
     slug: "garmin-line-bot",
@@ -73,24 +95,5 @@ export const projects: Project[] = [
     outcome:
       "Running on a standing daily/weekly schedule — a small automation that quietly removed a manual check-in habit.",
     tags: ["Python", "Garmin Connect API", "Automation", "LINE Messaging API"],
-  },
-  {
-    slug: "line-group-bot",
-    title: "Group Chat Summarizer",
-    type: "Side project",
-    meta: "Personal · Node.js · 2026",
-    icon: "chat",
-    summary:
-      "Tag the bot in a busy LINE group and it replies with a structured summary — decisions, action items, open questions.",
-    context:
-      "Fast-moving group chats bury decisions and action items. Catching up after being away meant scrolling through dozens of messages.",
-    role: "Solo build.",
-    actions: [
-      "Built a LINE Official Account webhook that buffers recent group messages and summarizes them via OpenAI into Summary / Key Decisions / Action Items / Open Questions on @-mention.",
-      "Worked around LINE's API having no chat-history endpoint by having the bot build its own rolling window from messages it observes live.",
-    ],
-    outcome:
-      "Working prototype — a reusable buffer-and-summarize pattern for any noisy group chat.",
-    tags: ["OpenAI", "LINE Messaging API", "Node.js"],
   },
 ];
