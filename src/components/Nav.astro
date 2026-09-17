@@ -1,0 +1,48 @@
+---
+const links = [
+  { href: "/experience", label: "Experience" },
+  { href: "/portfolio", label: "Portfolio" },
+  { href: "/blog", label: "Writing" },
+];
+
+const path = Astro.url.pathname;
+---
+
+<header class="border-b border-line">
+  <nav
+    class="mx-auto flex max-w-page items-center justify-between px-6 py-5 sm:px-8"
+  >
+    <a href="/" class="link-quiet font-serif text-lg tracking-tight text-ink">
+      Ronapat
+    </a>
+    <ul class="flex flex-wrap items-center gap-4 text-xs sm:gap-6 sm:text-sm">
+      {
+        links.map((link) => {
+          const active =
+            path === link.href || path.startsWith(link.href + "/");
+          return (
+            <li>
+              <a
+                href={link.href}
+                class:list={[
+                  "link-quiet",
+                  active ? "text-accent" : "text-ink-soft hover:text-ink",
+                ]}
+              >
+                {link.label}
+              </a>
+            </li>
+          );
+        })
+      }
+      <li>
+        <a
+          href="/contact"
+          class="rounded-full border border-ink px-4 py-1.5 text-ink transition-colors hover:border-accent hover:bg-accent hover:text-bg link-quiet"
+        >
+          Contact
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>

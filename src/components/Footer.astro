@@ -1,0 +1,27 @@
+---
+const year = new Date().getFullYear();
+
+const links = [
+  { href: "https://www.linkedin.com/in/ronapat", label: "LinkedIn" },
+  { href: "mailto:ronapat@hotmail.com", label: "Email" },
+];
+---
+
+<footer class="border-t border-line">
+  <div
+    class="mx-auto flex max-w-page flex-col gap-4 px-6 py-10 text-sm text-ink-soft sm:flex-row sm:items-center sm:justify-between sm:px-8"
+  >
+    <p>© {year} Ronapat Srisupavanich. Based in Bangkok.</p>
+    <ul class="flex gap-5">
+      {
+        links.map((link) => (
+          <li>
+            <a href={link.href} class="link-quiet hover:text-accent">
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</footer>

@@ -1,0 +1,87 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+// PLACEHOLDER CONTENT — replace once real project/impact details are in.
+const highlights = [
+  {
+    title: "Project title one",
+    blurb:
+      "One sentence on the problem and the outcome — replace with a real highlight once Portfolio is filled in.",
+    href: "/portfolio",
+  },
+  {
+    title: "Project title two",
+    blurb:
+      "One sentence on the problem and the outcome — replace with a real highlight once Portfolio is filled in.",
+    href: "/portfolio",
+  },
+  {
+    title: "Project title three",
+    blurb:
+      "One sentence on the problem and the outcome — replace with a real highlight once Portfolio is filled in.",
+    href: "/portfolio",
+  },
+];
+---
+
+<BaseLayout title="Home">
+  <section class="mx-auto max-w-page px-6 pb-16 pt-20 sm:px-8 sm:pt-28">
+    <p class="text-sm uppercase tracking-[0.2em] text-ink-soft">
+      Bangkok — Product &amp; Program Management
+    </p>
+    <h1
+      class="mt-6 max-w-3xl font-serif text-4xl leading-[1.15] text-ink sm:text-5xl sm:leading-[1.15]"
+    >
+      {/* PLACEHOLDER — this is the single most important sentence on the
+      site. Swap for a real positioning statement: what you do, at what
+      scale, with what kind of outcome. Not a job title. */}
+      I turn ambiguous, cross-functional problems into shipped product —
+      at companies from early-stage to Amazon-scale.
+    </h1>
+    <p class="mt-6 max-w-xl text-lg text-ink-soft">
+      {/* PLACEHOLDER — 2-3 sentences of supporting context: current role,
+      the throughline across past roles, what you're looking for next. */}
+      Currently a Project Manager at Agoda. Previously at Amazon, Carsome,
+      Poly.AI, and Digital Boost — across travel, e-commerce, and
+      conversational AI. This paragraph needs your real framing.
+    </p>
+    <div class="mt-10 flex flex-wrap gap-4">
+      <a
+        href="/portfolio"
+        class="link-quiet rounded-full bg-ink px-6 py-3 text-sm text-bg transition-colors hover:bg-accent"
+      >
+        See what I've built
+      </a>
+      <a
+        href="/experience"
+        class="link-quiet rounded-full border border-line px-6 py-3 text-sm text-ink transition-colors hover:border-accent hover:text-accent"
+      >
+        Read my experience
+      </a>
+    </div>
+  </section>
+
+  <section class="border-t border-line bg-white/40">
+    <div class="mx-auto max-w-page px-6 py-16 sm:px-8">
+      <div class="flex items-baseline justify-between">
+        <h2 class="font-serif text-2xl text-ink">Selected work</h2>
+        <a href="/portfolio" class="link-quiet text-sm text-ink-soft hover:text-accent">
+          View all →
+        </a>
+      </div>
+      <div class="mt-10 grid gap-8 sm:grid-cols-3">
+        {
+          highlights.map((item) => (
+            <a href={item.href} class="link-quiet group block">
+              <div class="aspect-[4/3] rounded-lg border border-dashed border-line bg-accent-soft/40 transition-colors group-hover:border-accent" />
+              <h3 class="mt-4 font-serif text-lg text-ink group-hover:text-accent">
+                {item.title}
+              </h3>
+              <p class="mt-1 text-sm text-ink-soft">{item.blurb}</p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

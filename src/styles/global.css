@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif text-ink;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  a {
+    @apply underline decoration-line decoration-1 underline-offset-4 transition-colors;
+  }
+
+  a:hover {
+    @apply decoration-accent text-accent;
+  }
+
+  ::selection {
+    @apply bg-accent-soft text-ink;
+  }
+}
+
+@layer components {
+  .link-quiet {
+    @apply no-underline hover:no-underline;
+  }
+
+  .hairline {
+    @apply border-line;
+  }
+}

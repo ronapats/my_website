@@ -1,0 +1,49 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const dateFormat = new Intl.DateTimeFormat("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <article class="mx-auto max-w-prose px-6 py-20 sm:px-8 sm:py-28">
+    <a href="/blog" class="link-quiet text-sm text-ink-soft hover:text-accent"
+      >← Writing</a
+    >
+    <h1 class="mt-6 font-serif text-4xl leading-tight text-ink sm:text-5xl">
+      {post.data.title}
+    </h1>
+    <div class="mt-4 flex flex-wrap items-center gap-3 text-sm text-ink-soft">
+      <time datetime={post.data.pubDate.toISOString()}>
+        {dateFormat.format(post.data.pubDate)}
+      </time>
+      {
+        post.data.tags.map((tag) => (
+          <span class="rounded-full border border-line px-3 py-1 text-xs">
+            {tag}
+          </span>
+        ))
+      }
+    </div>
+    <div
+      class="prose prose-neutral mt-10 max-w-none prose-headings:font-serif prose-headings:font-medium prose-a:text-ink prose-a:underline prose-a:decoration-line prose-a:underline-offset-4 hover:prose-a:decoration-accent hover:prose-a:text-accent prose-blockquote:border-accent prose-blockquote:text-ink-soft prose-code:text-ink prose-strong:text-ink"
+    >
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

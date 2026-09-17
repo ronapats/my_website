@@ -1,0 +1,50 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const links = [
+  {
+    label: "Email",
+    value: "ronapat@hotmail.com",
+    href: "mailto:ronapat@hotmail.com",
+  },
+  {
+    label: "LinkedIn",
+    value: "linkedin.com/in/ronapat",
+    href: "https://www.linkedin.com/in/ronapat",
+  },
+];
+---
+
+<BaseLayout
+  title="Contact"
+  description="Get in touch — email or LinkedIn."
+>
+  <section class="mx-auto max-w-page px-6 py-20 sm:px-8 sm:py-28">
+    <p class="text-sm uppercase tracking-[0.2em] text-ink-soft">Contact</p>
+    <h1 class="mt-4 max-w-xl font-serif text-4xl leading-tight text-ink sm:text-5xl">
+      Let's talk.
+    </h1>
+    <p class="mt-6 max-w-xl text-lg text-ink-soft">
+      Open to product and program management conversations — reach out
+      directly.
+    </p>
+
+    <div class="mt-12 max-w-md divide-y divide-line border-t border-line">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class="link-quiet group flex items-center justify-between py-5"
+          >
+            <span class="text-sm uppercase tracking-wide text-ink-soft">
+              {link.label}
+            </span>
+            <span class="font-serif text-lg text-ink group-hover:text-accent">
+              {link.value}
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>
