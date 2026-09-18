@@ -1,4 +1,4 @@
-export type ProjectIcon = "fpl" | "football" | "fitness";
+export type ProjectIcon = "fpl" | "football" | "fitness" | "broker";
 
 export interface Screenshot {
   src: string;
@@ -21,6 +21,27 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    slug: "broker-buzz",
+    title: "Broker Buzz",
+    type: "Side project",
+    meta: "Personal · Python · 2026 · In progress",
+    icon: "broker",
+    summary:
+      "A read-only research digest of Thai securities-broker Telegram channels — what brokers said, what changed, and which stocks get the most attention.",
+    context:
+      "Thai brokers publish research across a dozen Telegram channels and LINE accounts, as text, PDFs, and infographic images. Keeping up meant scrolling every channel and mentally diffing ratings and target prices.",
+    role: "Solo build — scoped it in phases, designed the data model, and set the guardrails.",
+    actions: [
+      "Built a Telethon-based collector that incrementally pulls messages and PDF attachments from 13 configured channels into SQLite, with FloodWait handling and per-channel run summaries.",
+      "Added an inspection step that sizes the data problem (media mix, PDF extraction health, where rating language actually appears) before any parsing is trusted.",
+      "Built a vision-transcription bake-off comparing Gemini and Groq on broker infographics, using models strictly as transcribers rather than interpreters.",
+      "Designed it read-only by construction: no trading, no brokerage connection, and no generated buy/sell view — any \"Buy\" label comes from the broker's own words.",
+    ],
+    outcome:
+      "Phase 1 of 3 is working: 810 messages collected across 13 channels with a test suite. Rating and target-price parsing and the digest come next, once the real data has been reviewed.",
+    tags: ["Python", "Telegram API", "SQLite", "Vision models", "Data pipeline"],
+  },
   {
     slug: "fpl-line-bot",
     title: "FPL Companion Bot",

@@ -48,4 +48,14 @@ const { icon } = Astro.props;
       </svg>
     )
   }
+  {
+    icon === "broker" && (
+      <svg viewBox="0 0 64 64" class="h-8 w-8" fill="none">
+        <rect x="10" y="14" width="30" height="6" rx="1.5" stroke="#1C1B19" stroke-width="2" />
+        <rect x="10" y="28" width="22" height="6" rx="1.5" stroke="#1C1B19" stroke-width="2" />
+        <rect x="10" y="42" width="26" height="6" rx="1.5" stroke="#1C1B19" stroke-width="2" />
+        <path d="M40 48l8-9 6 5 6-14" stroke="#B5502D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    )
+  }
 </div>
