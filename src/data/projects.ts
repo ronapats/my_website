@@ -1,4 +1,4 @@
-export type ProjectIcon = "fpl" | "football" | "fitness" | "broker";
+export type ProjectIcon = "fpl" | "football" | "fitness" | "broker" | "tracker";
 
 export interface Screenshot {
   src: string;
@@ -21,6 +21,27 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    slug: "daily-tracker",
+    title: "iPhone Calorie & Exercise Tracker",
+    type: "Side project",
+    meta: "Personal · Web app on iPhone · 2026",
+    icon: "tracker",
+    summary:
+      "A personal daily tracker on my iPhone home screen — calories and macros against goals, runs, and gym sessions in one place.",
+    context:
+      "Food, running, and gym data lived in separate apps, none of which showed the day's intake against training in a single view — and I wanted full control over what gets tracked rather than another subscription.",
+    role: "Solo build — product design, UX, and implementation, iterated through use.",
+    actions: [
+      "Designed a five-tab mobile-first app (Today, Food, Exercise, History, Settings) with a progress ring for calories and macros against daily goals.",
+      "Built fast food logging around a personal library of saved and custom foods, plus workout logging with exercises, sets, and reps.",
+      "Imported runs from Garmin Connect data alongside manual entry, so training and nutrition sit on the same daily view.",
+      "Persisted everything in a hosted database and installed it on the iPhone home screen so it opens like a native app.",
+    ],
+    outcome:
+      "In daily personal use — one screen for how much I've eaten, run, and lifted today, with history to look back on.",
+    tags: ["Product design", "Mobile web", "Nutrition tracking", "Garmin data"],
+  },
   {
     slug: "broker-buzz",
     title: "Broker Buzz",
