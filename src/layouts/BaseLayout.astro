@@ -1,6 +1,7 @@
 ---
 import Nav from "@/components/Nav.astro";
 import Footer from "@/components/Footer.astro";
+import Analytics from "@/components/Analytics.astro";
 import "@/styles/global.css";
 
 interface Props {
@@ -30,6 +31,7 @@ const {
       href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+    <Analytics />
   </head>
   <body class="flex min-h-screen flex-col">
     <Nav />
