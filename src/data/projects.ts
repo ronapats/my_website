@@ -1,4 +1,4 @@
-export type ProjectIcon = "fpl" | "football" | "fitness" | "broker" | "tracker";
+export type ProjectIcon = "fpl" | "football" | "fitness" | "broker" | "tracker" | "analytics" | "feedback";
 
 export interface Screenshot {
   src: string;
@@ -21,6 +21,47 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    slug: "feedback-app",
+    title: "Feedback App",
+    type: "Side project",
+    meta: "Personal · Supabase · 2026",
+    icon: "feedback",
+    summary:
+      "A lightweight feedback board — anyone can leave a message with an optional 1–5 star rating, backed by a hosted Postgres database.",
+    context:
+      "I wanted a simple way to collect feedback without a third-party form tool, and a small, complete project to learn Supabase end to end.",
+    role: "Solo build — data model, access rules, and front end.",
+    actions: [
+      "Modelled feedback in Supabase Postgres: an optional name, a required message, and a rating constrained to 1–5 at the database level.",
+      "Enabled Row Level Security with policies that let anonymous visitors submit and read feedback, but not edit or delete it.",
+      "Connected the front end directly to Supabase with the public client key, so no custom backend server is needed.",
+    ],
+    outcome:
+      "Live and collecting its first entries. It also gave me a Supabase pattern I can reuse in other side projects.",
+    tags: ["Supabase", "PostgreSQL", "Row Level Security", "Web app"],
+  },
+  {
+    slug: "site-analytics",
+    title: "Website Analytics with PostHog & GA4",
+    type: "Side project",
+    meta: "Personal · This website · 2026",
+    icon: "analytics",
+    summary:
+      "Product analytics on this portfolio site — GA4 for traffic, PostHog for which links get clicked and which sections people actually read.",
+    context:
+      "Page views alone don't show whether visitors read the portfolio or click through to get in touch. I wanted event-level data on my own site, tracked the way I'd want a real product tracked.",
+    role: "Solo build — tracking plan, instrumentation, and setup.",
+    actions: [
+      "Added Google Analytics 4 for traffic and acquisition, and PostHog for product-style event tracking.",
+      "Built one shared click tracker driven by data-track-click attributes on the Contact, LinkedIn, and Email links, so adding a new tracked link takes one attribute and no new code.",
+      "Used an IntersectionObserver to send a section_viewed event the first time each tagged section is at least half visible, which shows how far down each page visitors get.",
+      "Loaded both tools only when their environment variables are set, so local development never sends test traffic to the real accounts.",
+    ],
+    outcome:
+      "Running in production on this site. Instead of guessing which pages and links get attention, I can now see it.",
+    tags: ["PostHog", "Google Analytics 4", "Event tracking", "Astro"],
+  },
   {
     slug: "daily-tracker",
     title: "iPhone Calorie & Exercise Tracker",

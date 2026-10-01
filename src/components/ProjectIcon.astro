@@ -68,4 +68,21 @@ const { icon } = Astro.props;
       </svg>
     )
   }
+  {
+    icon === "analytics" && (
+      <svg viewBox="0 0 64 64" class="h-8 w-8" fill="none">
+        <path d="M10 52h44" stroke="#1C1B19" stroke-width="2" stroke-linecap="round" />
+        <path d="M14 44l11-12 9 7 16-19" stroke="#1C1B19" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <circle cx="50" cy="20" r="4" fill="#B5502D" />
+      </svg>
+    )
+  }
+  {
+    icon === "feedback" && (
+      <svg viewBox="0 0 64 64" class="h-8 w-8" fill="none">
+        <path d="M10 14h44v28H28l-10 9v-9h-8Z" stroke="#1C1B19" stroke-width="2" stroke-linejoin="round" />
+        <path d="M32 21l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.6-4.8 2.6.9-5.4-3.9-3.8 5.4-.8Z" fill="#B5502D" />
+      </svg>
+    )
+  }
 </div>
